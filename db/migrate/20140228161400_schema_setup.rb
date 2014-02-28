@@ -8,6 +8,7 @@ class SchemaSetup < ActiveRecord::Migration
       create_table :stories do |t|
         t.text :link
         t.string :title
+        t.references :user
         t.timestamps
       end
       create_table :votes do |t|
