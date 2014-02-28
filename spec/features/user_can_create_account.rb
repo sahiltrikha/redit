@@ -5,7 +5,6 @@ describe "user can create account" do
   it "creates account" do
     visit root_path
     click_link "Sign Up"
-    # visit "/users/new"
     fill_in "user_username", with: "Sahil20"
     fill_in "user_email", with: "email@email.com"
     fill_in "user_password", with: "hello"
