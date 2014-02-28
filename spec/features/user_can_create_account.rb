@@ -3,11 +3,12 @@ require "spec_helper"
 describe "user can create account" do 
 
   it "creates account" do
-    visit '/stories'
+    visit root_path
     click_link "Sign Up"
-    fill_in "Username:", with: "Sahil20"
-    fill_in "Email:", with: "email@email.com"
-    fill_in "Password:", with: "hello"
+    # visit "/users/new"
+    fill_in "user_username", with: "Sahil20"
+    fill_in "user_email", with: "email@email.com"
+    fill_in "user_password", with: "hello"
     click_button "Create Account"
 
 
