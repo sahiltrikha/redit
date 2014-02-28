@@ -6,4 +6,7 @@ Redit::Application.routes.draw do
   get '/stories', to: "stories#index"
 
   root "stories#index"
+  get '/login', to: "session#new"
+  post '/session', to: "session#create"
+  delete '/session', to: "session#destroy"
 end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-descrive "user can log in" do 
+describe "user can log in" do 
 
   it "can enter user and pass to log in" do
     visit root_path
