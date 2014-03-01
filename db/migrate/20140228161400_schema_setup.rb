@@ -1,4 +1,4 @@
-class SchemaSetup < ActiveRecord::Migration
+howclass SchemaSetup < ActiveRecord::Migration
   def change
       create_table :users do |t|
         t.string :username

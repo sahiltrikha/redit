@@ -8,8 +8,17 @@
 </head>
 <body>
 
-<a href="/users/new">Sign Up</a>
-<a href="/login">Log In</a>
+<%= link_to "Redit", root_path %>
+
+<header>
+  <% if logged_in? %>
+    <%= link_to("Log Out #{current_user.username}", "/session", method: "delete") %>
+  <% else %>
+    <%= link_to("Member Log In", login_path) %>
+    <%= link_to("Sign Up", new_user_path) %>
+  <% end %>
+</header>
+
 <%= yield %>
 
 </body>

@@ -5,18 +5,21 @@ describe "user can submit story link" do
   let(:story) { Story.new(link: "example.com") }
 
   it "can create a new story" do 
+    login(user)
+
+  end
   
 
   end
 
 
-
-
   def login(user)
-    visit '/login'
-    fill :username, with: user.username
-    fill_in :password, user.password
-    click_button "Log In"
+    visit "/login"
+    fill_in :username, with: user.email
+    fill_in :password, with: user.password
+    click_button "Log in!"
   end
+
+  
 
 end

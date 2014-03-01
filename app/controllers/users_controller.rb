@@ -16,12 +16,16 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by(id: params[:id])
+    load_user
     render :show
   end
-
+  
   def user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+
+  def load_user
+    return @user = User.find(params[:id])
   end
 
   def authenticate
@@ -31,6 +35,8 @@ class UsersController < ApplicationController
   end
 
   def authorize
+    unless current_user == @user
+      redirect_to login_path
+    end
   end
-
 end
