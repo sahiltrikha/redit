@@ -8,6 +8,7 @@ describe "user can create account" do
     fill_in "user_username", with: "Sahil20"
     fill_in "user_email", with: "email@email.com"
     fill_in "user_password", with: "hello"
+    fill_in "user_password_confirmation", with: "hello"
     click_button "Create Account"
 
 

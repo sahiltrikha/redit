@@ -8,11 +8,13 @@
 </head>
 <body>
 
-<%= link_to "Redit", root_path %>
+
 
 <header>
+  <%= link_to "Redit", root_path %>
   <% if logged_in? %>
     <%= link_to("Log Out #{current_user.username}", "/session", method: "delete") %>
+      <%= link_to "Submit Story", new_user_story_path(current_user) %>
   <% else %>
     <%= link_to("Member Log In", login_path) %>
     <%= link_to("Sign Up", new_user_path) %>
@@ -20,6 +22,11 @@
 </header>
 
 <%= yield %>
+
+<footer>
+  <%= debug params %>
+  <%= debug session.to_hash %>
+</footer>
 
 </body>
 </html>

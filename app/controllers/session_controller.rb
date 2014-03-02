@@ -6,8 +6,10 @@ class SessionController < ApplicationController
 
   def create
     user = User.find_by(username: params[:username])
-    if user # authenticate?
-      session[:user_id] = user.id
+    # binding.pry
+    if user && user.authenticate( params[:password] )
+      #huzzah, the password is authenticated!
+      session[:user_id] = user.id #ie, create the session
       redirect_to user_path(user)
     else
       @message = "This username and password combination does not exist."

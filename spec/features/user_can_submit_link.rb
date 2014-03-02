@@ -6,20 +6,16 @@ describe "user can submit story link" do
 
   it "can create a new story" do 
     login(user)
-
+    click_link "Submit Story"
+    fill_in :link, with: "Example.com"
+    expect(page).to have_content ("Example Domain")
   end
-  
-
-  end
-
 
   def login(user)
-    visit "/login"
-    fill_in :username, with: user.email
-    fill_in :password, with: user.password
-    click_button "Log in!"
+    visit root_path
+    click_link "Member Log In"
+    fill_in "username", with: user.username
+    fill_in "password", with: user.password
+    click_button "Log In"
   end
-
-  
-
 end

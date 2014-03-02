@@ -10,7 +10,8 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
-    story.title = story_params
+    story.title = html_title
+    story.user = current_user
   end
 
   private
@@ -21,6 +22,7 @@ class StoriesController < ApplicationController
 
 
   def html_title
+    #
   end
 
 end
