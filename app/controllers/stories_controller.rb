@@ -10,24 +10,23 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     render(:new)
-    binding.pry
   end
 
   def create
     @story = Story.new(story_params)
-    story.title = html_title
-    story.user = current_user
+    @story.title = html_title
+    @story.user = current_user
 
 
     if @story.save 
-      redirect_to root_path
+      redirect_to user_stories_path(current_user)
     else
       render :new
     end
   end
 
   def show
-
+    render(:show)
   end
 
 

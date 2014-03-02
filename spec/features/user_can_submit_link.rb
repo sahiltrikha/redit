@@ -8,12 +8,12 @@ describe "user can submit story link" do
     login(user)
     click_link "Submit Story"
     fill_in "story_link", with: "Example.com"
+    click_button "Submit Story"
     expect(page).to have_content ("Example Domain")
   end
 
   def login(user)
-    visit root_path
-    click_link "Member Log In"
+    visit "/login"
     fill_in "username", with: user.username
     fill_in "password", with: user.password
     click_button "Log In"
