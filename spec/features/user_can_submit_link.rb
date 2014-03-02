@@ -2,12 +2,12 @@ require "spec_helper"
 
 describe "user can submit story link" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:story) { Story.new(link: "example.com") }
+  let(:story) { Story.new(link: "http://example.com") }
 
   it "can create a new story" do 
     login(user)
     click_link "Submit Story"
-    fill_in :link, with: "Example.com"
+    fill_in "story_link", with: "Example.com"
     expect(page).to have_content ("Example Domain")
   end
 

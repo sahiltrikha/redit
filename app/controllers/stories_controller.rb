@@ -1,18 +1,35 @@
+require 'open-uri'
+
+
 class StoriesController < ApplicationController
 
   def index 
+    @stories = Stories.all
   end 
 
   def new
     @story = Story.new
     render(:new)
+    binding.pry
   end
 
   def create
     @story = Story.new(story_params)
     story.title = html_title
     story.user = current_user
+
+
+    if @story.save 
+      redirect_to root_path
+    else
+      render :new
+    end
   end
+
+  def show
+
+  end
+
 
   private
 
@@ -20,9 +37,9 @@ class StoriesController < ApplicationController
     params.require(:story).permit(:link)
   end
 
-
   def html_title
-    #
+    source_page = Nokogiri::HTML(open(params[:link]))
+    return source_page.css('title')[0].text
   end
 
 end
