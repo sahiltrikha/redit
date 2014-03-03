@@ -27,8 +27,7 @@ class StoriesController < ApplicationController
   def show
     render(:show)
   end
-
-
+  
   private
 
   def story_params

@@ -3,10 +3,19 @@
 <% @stories.each do |story| %>
   <div class ="stories">
   <a class= "story_link" href= <%= story.link %> > <%= story.title %> </a>
-  <p class="story_user"> <%= link_to "#{story.user.username}", user_stories_path(story.user) %> </p>
-  <div class = "vote_button">
-    <%= link_to "Vote Up", story_votes_path(story), method: :post %>
-    <%= link_to "Vote Down", story_votes_path(story), method: :post %>
+  <p class="story_user"> <%= link_to "#{story.user.username}", user_stories_path(story.user) %> </p>  
+  <p class="story_score"> <%= story.story_score(story) %> </p>
+
+  <% if logged_in? %>
+    <div class = "vote_button">
+      <%= form_tag(story_votes_path(story), method: "post") do %> 
+      <%= radio_button_tag(:vote, "Up") %>
+      <%= label_tag(:vote_up, "Up") %>
+      <%= radio_button_tag(:vote, "Down") %>
+      <%= label_tag(:vote_down, "Down") %>
+      <%= submit_tag("Vote") %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 <% end %>
