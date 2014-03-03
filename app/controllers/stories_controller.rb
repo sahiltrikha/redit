@@ -4,7 +4,7 @@ require 'open-uri'
 class StoriesController < ApplicationController
 
   def index 
-    @stories = Stories.all
+    @stories = Story.all
   end 
 
   def new
@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     @story.title = html_title
-    @story.user = current_user
+    @story.user_id = current_user
 
 
     if @story.save 
@@ -37,7 +37,7 @@ class StoriesController < ApplicationController
   end
 
   def html_title
-    source_page = Nokogiri::HTML(open(params[:link]))
+    source_page = Nokogiri::HTML(open(params["story"]["link"]))
     return source_page.css('title')[0].text
   end
 
