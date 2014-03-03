@@ -12,7 +12,8 @@ describe "user can submit story link" do
     click_button "Submit Story"
     login(user2)
     visit root_path
-    click_link "Vote Up"
+    choose("vote_up")
+    click_button "Vote"
     expect(page).to have_content "1"
   end
 
