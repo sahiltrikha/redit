@@ -1,7 +1,12 @@
-<span> Stories </span>
+<h3> Stories </h3>
 
 <% @stories.each do |story| %>
-  <%= story.title %>
-  <%= link_to "Vote Up", story_votes_path(story), method: :post %>
-  <%= link_to "Vote Down", story_votes_path(story), method: :post %>
+  <div class ="stories">
+  <a class= "story_link" href= <%= story.link %> > <%= story.title %> </a>
+  <p class="story_user"> <%= link_to "#{story.user.username}", user_stories_path(story.user) %> </p>
+  <div class = "vote_button">
+    <%= link_to "Vote Up", story_votes_path(story), method: :post %>
+    <%= link_to "Vote Down", story_votes_path(story), method: :post %>
+  </div>
+</div>
 <% end %>
