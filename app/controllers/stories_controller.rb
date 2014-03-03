@@ -17,7 +17,6 @@ class StoriesController < ApplicationController
     @story.title = html_title
     @story.user_id = current_user
 
-
     if @story.save 
       redirect_to user_stories_path(current_user)
     else

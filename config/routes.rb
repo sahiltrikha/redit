@@ -3,7 +3,9 @@ Redit::Application.routes.draw do
     resources :stories
   end
 
-  resources :stories
+  resources :stories do
+    resources :votes, only: [:create]
+  end
 
   root "stories#index"
   

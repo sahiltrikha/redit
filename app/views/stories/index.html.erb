@@ -2,4 +2,6 @@
 
 <% @stories.each do |story| %>
   <%= story.title %>
+  <%= link_to "Vote Up", story_votes_path(story), method: :post %>
+  <%= link_to "Vote Down", story_votes_path(story), method: :post %>
 <% end %>

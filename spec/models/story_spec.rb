@@ -5,4 +5,5 @@ describe Story do
   it { should validate_uniqueness_of(:link) }
   it { should have_many(:comments) } 
   it { should have_many(:votes) }   
+  it { should belong_to(:user) }
 end
