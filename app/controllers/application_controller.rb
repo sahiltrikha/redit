@@ -11,6 +11,15 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  helper_method :current_user, :logged_in?
+  def voted?(story)
+    votes = current_user.votes
+    stories = []
+    votes.each do |vote|
+      stories << vote.story 
+    end
+    return stories.include?(story)
+  end
+
+  helper_method :current_user, :logged_in?, :voted?
   
 end

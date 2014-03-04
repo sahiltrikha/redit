@@ -9,11 +9,13 @@
   <% if logged_in? %>
     <div class = "vote_button">
       <%= form_tag(story_votes_path(story), method: "post") do %> 
-      <%= radio_button_tag(:vote, "Up") %>
-      <%= label_tag(:vote_up, "Up") %>
-      <%= radio_button_tag(:vote, "Down") %>
-      <%= label_tag(:vote_down, "Down") %>
-      <%= submit_tag("Vote") %>
+      <% if !voted?(story) %>
+        <%= radio_button_tag(:vote, "Up") %>
+        <%= label_tag(:vote_up, "Up") %>
+        <%= radio_button_tag(:vote, "Down") %>
+        <%= label_tag(:vote_down, "Down") %>
+        <%= submit_tag("Vote") %>
+      <% end %>
       <% end %>
     <% end %>
   </div>

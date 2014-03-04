@@ -13,4 +13,5 @@ class Story < ActiveRecord::Base
     end
     return story_score
   end
+  
 end
